@@ -1,5 +1,5 @@
-import { Explosion } from './Explosion';
 import { ParticleSystem } from './../ParticleSystem';
+import { Explosion } from './Explosion';
 
 export class ExplosionSystem extends ParticleSystem {
     

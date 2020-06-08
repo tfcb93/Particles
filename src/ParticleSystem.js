@@ -29,6 +29,9 @@ export class ParticleSystem {
         });
     }
 
+    /**
+     * I'm actually thinking in make it more simple for this one and control better on the specifics one hmmm
+     */
     update(gravity=[], force=[]) {
         if(gravity.length) {
             this.applyGravity(gravity);
@@ -36,7 +39,7 @@ export class ParticleSystem {
         if(force.length) {
             this.applyForce(force);
         }
-        if(this.particles.length !== this.totalParticles && (this.totalEmissions < this.emitterCounter || this.emitterCounter === -1)) {
+        if(this.particles.length === 0 && (this.totalEmissions < this.emitterCounter || this.emitterCounter === -1)) {
             while(this.particles.length < this.totalParticles) {
                 this.addParticle();
             }

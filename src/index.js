@@ -1,8 +1,12 @@
 // import { ParticleSystem } from './ParticleSystem';
 import { ExplosionSystem } from './Explosion/ExplosionSystem';
+import { WaterfallSystem } from './Waterfall/WaterfallSystem';
 
 let canvas;
 let context;
+
+let particleType = 'explosion';
+let emissions = 1;
 
 const gravity = [0, .01];
 
@@ -14,10 +18,42 @@ const load = () => {
     canvas.height = window.innerHeight;
     context = canvas.getContext('2d');
 
+    // document.addEventListener();
+
+    document.addEventListener('keydown',(e) => {
+        switch(e.key) {
+            case 'q':
+                particleType = 'explosion';
+            break;
+            case 'w':
+                particleType = 'waterfall';
+            break;
+            case 'ArrowUp':
+                emissions++;
+            break;
+            case 'ArrowDown':
+                if(emissions === -1) break;
+                else emissions--;
+            break;
+            default:
+                null;
+        }
+    });
+    
     //canvas.addEventListener();
 
+
     canvas.addEventListener('mousedown', (e) => {
-        systems.push(new ExplosionSystem(e.clientX, e.clientY,-1));
+        switch(particleType) {
+            case 'explosion':
+                systems.push(new ExplosionSystem(e.clientX, e.clientY,emissions));
+            break;
+            case 'waterfall':
+                systems.push(new WaterfallSystem(e.clientX, e.clientY));
+            break;
+            default:
+                null;
+        }
     });
 
 
@@ -45,6 +81,6 @@ loop();
 
 
 /**
- * Arrumar projeto para poder fazer as particulas extenderem da particula principal assim como seus sistemas
- * Realizar testes
+ * Waterfall
+ * Excluir sistema após terminar o número de emissões previstas
  */
