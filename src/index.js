@@ -1,11 +1,10 @@
-import { Particle } from './Particle';
-import { ParticleSystem } from './ParticleSystem';
+// import { ParticleSystem } from './ParticleSystem';
+import { ExplosionSystem } from './Explosion/ExplosionSystem';
 
 let canvas;
 let context;
 
 const gravity = [0, .01];
-
 
 let systems = [];
 
@@ -18,7 +17,7 @@ const load = () => {
     //canvas.addEventListener();
 
     canvas.addEventListener('mousedown', (e) => {
-        systems.push(new ParticleSystem(e.clientX, e.clientY,-1));
+        systems.push(new ExplosionSystem(e.clientX, e.clientY,-1));
     });
 
 

@@ -12,7 +12,7 @@ export class ParticleSystem {
     }
 
     addParticle() {
-        this.particles.push(new Particle(this.x + Math.random() * (20 + 20) - 20, this.y + Math.random() * (20 + 20) - 20, 300));
+        this.particles.push(new Particle(this.x + Math.random() * (20 + 20) - 20, this.y + Math.random() * (20 + 20) - 20, 300, [0,0], [0,0]));
     }
 
     //Thanks Khan Academy for teaching me it :)

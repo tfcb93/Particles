@@ -1,22 +1,16 @@
-
-
 export class Particle {
     
-    constructor(x, y, lifetime) {
+    constructor(x, y, lifetime, acceleration = [0, 0], velocity = [0, 0]) {
         this.x = x;
         this.y = y;
-        this.acceleration = [0, 0];
-        this.mass = 10;
-        this.velocity = [Math.floor(Math.random() * (2 + 2) - 2), Math.floor(Math.random() * (2 + 2) - 2)];
-        this.color = [Math.floor(200 + Math.random() * 55), Math.floor(Math.random() * 40), Math.floor(Math.random() * 40)];
+        this.acceleration = acceleration;
+        this.velocity = velocity;
+        this.mass = 1;
+        this.color = [1,1,1];
         this.visibility = 1.0; //this should be in frames;
         this.age = 0; //this should be in frames as well;
         this.lifetime = lifetime;
         this.isDead = false;
-
-        while(this.velocity[0] === 0.0 || this.velocity[0] === 0.0 ) {
-            this.velocity = [Math.floor(Math.random() * (1 + 1) - 1), Math.floor(Math.random() * (1 + 1) - 1)];
-        }
     }
 
     draw(context) {
